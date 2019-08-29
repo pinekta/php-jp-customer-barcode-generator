@@ -1,0 +1,27 @@
+# Created by https://www.gitignore.io/api/vagrant,composer,visualstudiocode
+
+### Composer ###
+composer.phar
+composer.lock
+/vendor/
+/tests/files/generated/*
+
+# Commit your application's lock file http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file
+# You may choose to ignore a library lock file http://getcomposer.org/doc/02-libraries.md#lock-file
+# composer.lock
+
+### Vagrant ###
+.vagrant/
+*.box
+
+### VisualStudioCode ###
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+.history
+
+/build
+
+# End of https://www.gitignore.io/api/vagrant,composer,visualstudiocode
