@@ -1,13 +1,10 @@
 # php-jp-customer-barcode-generator
 
-<!--
 ![Build status](https://img.shields.io/circleci/project/github/pinekta/php-jp-customer-barcode-generator.svg)
-[![Coverage Status](https://coveralls.io/repos/github/pinekta/php-jp-customer-barcode-generator/badge.svg?branch=master)](https://coveralls.io/github/pinekta/php-jp-customer-barcode-generator?branch=master)
-![License](https://img.shields.io/packagist/l/pinekta/php-jp-customer-barcode-generator.svg)
 ![PHP Version](https://img.shields.io/badge/PHP-%3E%3D5.4-blue.svg)
+[![Coverage Status](https://coveralls.io/repos/github/pinekta/php-jp-customer-barcode-generator/badge.svg?branch=master)](https://coveralls.io/github/pinekta/php-jp-customer-barcode-generator?branch=master)
 ![Packagist Version](https://img.shields.io/packagist/v/pinekta/php-jp-customer-barcode-generator.svg)
--->
-
+![License](https://img.shields.io/packagist/l/pinekta/php-jp-customer-barcode-generator.svg)
 
 <!--
 badge
