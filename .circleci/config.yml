@@ -27,7 +27,6 @@ jobs:
           - v1-dependencies-
 
       - run: mkdir -p build/logs
-      - run: sudo apt-get install imagemagick
       - run: composer install -n --prefer-dist
 
       - save_cache:
