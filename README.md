@@ -68,6 +68,11 @@ echo '<img src="data:image/jpg;base64,' . base64_encode($generator->getBarcode('
 
 ![JPG](./sample/sample.jpg)
 
+## Result about Japan post check sheet
+
+Please check below link.  
+[result](./sample/create-barcode-result.html)
+
 <!--
 ## Documentation
 
