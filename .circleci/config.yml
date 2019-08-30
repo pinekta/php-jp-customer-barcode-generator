@@ -27,7 +27,8 @@ jobs:
           - v1-dependencies-
 
       - run: mkdir -p build/logs
-      - run: sudo apt-get install -y -qq install libfreetype6-dev libpng-dev libjpeg-dev
+      - run: sudo apt-get update -y -qq
+      - run: sudo apt-get install -y -qq libfreetype6-dev libpng-dev libjpeg-dev
       - run: sudo docker-php-ext-install gd
       - run: composer install -n --prefer-dist
 
