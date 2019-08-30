@@ -200,7 +200,7 @@ abstract class BarcodeGenerator
         }
 
         if (empty($address)) {
-            throw new InvalidPostCodeException("Address is empty.");
+            throw new InvalidAddressException("Address is empty.");
         }
 
         $postCode = trim(str_replace('-', '', $postCode));

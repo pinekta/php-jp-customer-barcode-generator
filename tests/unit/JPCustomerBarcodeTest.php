@@ -127,6 +127,55 @@ class JPCustomerBarcodeTest extends TestCase
     }
 
     /**
+     * @test
+     * @group error
+     * @expectedException Pinekta\JPCustomerBarcode\Exceptions\InvalidPostCodeException
+     */
+    public function errorIfEmptyPostCode()
+    {
+        $generator = new BarcodeGeneratorSVG();
+        $generated = $generator->getBarcode('', '東京都中央区築地2-3-4');
+    }
+
+    /**
+     * @test
+     * @group error
+     * @expectedException Pinekta\JPCustomerBarcode\Exceptions\InvalidPostCodeException
+     */
+    public function errorIfInvalidPostCode()
+    {
+        $generator = new BarcodeGeneratorSVG();
+        $generated = $generator->getBarcode('abc-1234', '東京都中央区築地2-3-4');
+    }
+
+    /**
+     * @test
+     * @group error
+     * @expectedException Pinekta\JPCustomerBarcode\Exceptions\InvalidAddressException
+     */
+    public function errorIfEmptyAddress()
+    {
+        $generator = new BarcodeGeneratorSVG();
+        $generated = $generator->getBarcode('104-0045', '');
+    }
+
+    /**
+     * @test
+     * @group error
+     */
+    public function errorIfEmptyCodeChars()
+    {
+        $class = new \ReflectionClass(BarcodeGeneratorSVG::class);
+        $method = $class->getMethod('convertCodeChars');
+        $method->setAccessible(true);
+        $this->assertNull($method->invokeArgs(new BarcodeGeneratorSVG(), [[]]));
+
+        $method = $class->getMethod('convertAlphabetToControlCode');
+        $method->setAccessible(true);
+        $this->assertNull($method->invokeArgs(new BarcodeGeneratorSVG(), [[]]));
+    }
+
+    /**
      * Data provider for isRightConvertCodeChars method
      * Data type is [$postCode, $address, $expected]
      *
