@@ -16,6 +16,11 @@ use Pinekta\JPCustomerBarcode\Exceptions\InvalidAddressException;
  */
 abstract class BarcodeGenerator
 {
+    /** @var int image library type is GD */
+    const IMAGE_LIBRARY_TYPES_GD = 1;
+    /** @var int image library type is ImageMagick */
+    const IMAGE_LIBRARY_TYPES_IMAGEMAGICK = 2;
+
     /** @var int bar type is none */
     const TYPES_NONE = 0;
     /** @var int bar type is long */
@@ -147,15 +152,36 @@ abstract class BarcodeGenerator
     protected $color;
 
     /**
+     * Library used for image output
+     *
+     * null or not specified : GD is used with priority, otherwise imagemagick is used
+     * 1 : GD is used
+     * 2 : imagemagick is used
+     *
+     * @var string
+     */
+    protected $imageLibraryType;
+
+    /**
      * constructor
      *
      * @param int $widthFactor
      * @param string $color
+     * @param int $imageLibraryType
+     * @throws InvalidArgumentException
      */
-    public function __construct($widthFactor = 2, $color = 'black')
+    public function __construct($widthFactor = 2, $color = 'black', $imageLibraryType = null)
     {
         $this->widthFactor = $widthFactor;
         $this->color = $color;
+
+        if ($imageLibraryType !== null &&
+            $imageLibraryType !== self::IMAGE_LIBRARY_TYPES_GD &&
+            $imageLibraryType !== self::IMAGE_LIBRARY_TYPES_IMAGEMAGICK) {
+            throw new \InvalidArgumentException('The value of the third argument "$imageLibraryType" is invalid.');
+        }
+
+        $this->imageLibraryType = $imageLibraryType;
     }
 
     /**
@@ -388,7 +414,7 @@ abstract class BarcodeGenerator
     {
         $barCount = 0;
         foreach ($chars as $char) {
-            $barCount += count(static::CONVERT_MAP[$char]);
+            $barCount += count(self::CONVERT_MAP[$char]);
         }
         // Decrease -1 because no trailing space
         $barSpaceCount = $barCount - 1;
@@ -404,7 +430,7 @@ abstract class BarcodeGenerator
      */
     protected function calculateHeight()
     {
-        return $this->widthFactor * static::HEIGHT_RATE_MAP[static::TYPES_LONG];
+        return $this->widthFactor * self::HEIGHT_RATE_MAP[self::TYPES_LONG];
     }
 
     /**
@@ -415,7 +441,7 @@ abstract class BarcodeGenerator
      */
     protected function calculateBarHeight($bar)
     {
-        return $this->widthFactor * static::HEIGHT_RATE_MAP[$bar];
+        return $this->widthFactor * self::HEIGHT_RATE_MAP[$bar];
     }
 
     /**
@@ -440,6 +466,27 @@ abstract class BarcodeGenerator
      */
     protected function calculateBarPositionY($bar, $height)
     {
-        return ($bar === static::TYPES_SEMILONG_BOTTOM || $bar === static::TYPES_TIMING) ? $height / 3 : 0;
+        return ($bar === self::TYPES_SEMILONG_BOTTOM || $bar === self::TYPES_TIMING) ? $height / 3 : 0;
+    }
+
+    /**
+     * resolve image library if image output
+     *
+     * @return int
+     * @throws BarcodeException
+     */
+    protected function resolveImageLibrary()
+    {
+        if ($this->imageLibraryType != null) {
+            return $this->imageLibraryType;
+        }
+
+        if (function_exists('imagecreate')) {
+            return self::IMAGE_LIBRARY_TYPES_GD;
+        } elseif (extension_loaded('imagick')) {
+            return self::IMAGE_LIBRARY_TYPES_IMAGEMAGICK;
+        } else {
+            throw new BarcodeException('Neither gd-lib or imagick are installed!');
+        }
     }
 }

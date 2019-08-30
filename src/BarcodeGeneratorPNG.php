@@ -26,24 +26,23 @@ class BarcodeGeneratorPNG extends BarcodeGenerator
     {
         $width = $this->calculateWidth($convertedChars);
         $height = $this->calculateHeight();
+        $useImageLibrary = $this->resolveImageLibrary();
         $color = [0, 0, 0];
 
-        if (function_exists('imagecreate')) {
+        if ($useImageLibrary === static::IMAGE_LIBRARY_TYPES_GD) {
             // GD library
             $imagick = false;
             $png = imagecreate($width, $height);
             $colorBackground = imagecolorallocate($png, 255, 255, 255);
             imagecolortransparent($png, $colorBackground);
             $colorForeground = imagecolorallocate($png, $color[0], $color[1], $color[2]);
-        } elseif (extension_loaded('imagick')) {
+        } elseif ($useImageLibrary === static::IMAGE_LIBRARY_TYPES_IMAGEMAGICK) {
             $imagick = true;
             $colorForeground = new \imagickpixel('rgb(' . $color[0] . ',' . $color[1] . ',' . $color[2] . ')');
             $png = new \Imagick();
             $png->newImage($width, $height, 'none', 'png');
             $imageMagickObject = new \imagickdraw();
             $imageMagickObject->setFillColor($colorForeground);
-        } else {
-            throw new BarcodeException('Neither gd-lib or imagick are installed!');
         }
 
         // print bars
