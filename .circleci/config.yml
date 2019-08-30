@@ -41,4 +41,4 @@ jobs:
       - run: vendor/bin/phpcs --warning-severity=6 --standard=PSR2 ./src
       - run: vendor/bin/phpcs --warning-severity=6 --standard=PSR2 ./tests
       - run: vendor/bin/phpunit
-      #- run: php vendor/bin/php-coveralls
+      - run: php vendor/bin/php-coveralls
