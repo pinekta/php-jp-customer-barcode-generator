@@ -1,9 +1,8 @@
 {
     "name": "pinekta/php-jp-customer-barcode-generator",
-    "description": "This library 'php-jp-customer-barcode-generator' provides image or html or SVG of Japan post's customer barcode.",
+    "description": "This library 'php-jp-customer-barcode-generator' is an easy to use, framework independent, Japan post's customer barcode generator in PHP.",
     "type": "library",
-    "keywords": ["barcode","japan","post","customer barcode","php","tools"],
-    "homepage": "http://pinekta.github.io/php-jp-customer-barcode-generator/",
+    "keywords": ["barcode", "barcode generator","japan","post","customer barcode","php","tools"],
     "license": "MIT",
     "authors": [
         {
