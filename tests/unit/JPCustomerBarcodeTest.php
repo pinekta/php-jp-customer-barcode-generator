@@ -128,6 +128,38 @@ class JPCustomerBarcodeTest extends TestCase
 
     /**
      * @test
+     * @group imagelibrary
+     */
+    public function gdBarcodeGeneratorCanGenerate()
+    {
+        $generator = new BarcodeGeneratorPNG(2, 'black', BarcodeGeneratorPNG::IMAGE_LIBRARY_TYPES_GD);
+        $generated = $generator->getBarcode('104-0045', '東京都中央区築地2-3-4');
+        $this->assertNotNull($generated);
+    }
+
+    /**
+     * @test
+     * @group imagelibrary
+     */
+    public function imagemagickBarcodeGeneratorCanGenerate()
+    {
+        $generator = new BarcodeGeneratorPNG(2, 'black', BarcodeGeneratorPNG::IMAGE_LIBRARY_TYPES_IMAGEMAGICK);
+        $generated = $generator->getBarcode('104-0045', '東京都中央区築地2-3-4');
+        $this->assertNotNull($generated);
+    }
+
+    /**
+     * @test
+     * @group error
+     * @expectedException \InvalidArgumentException
+     */
+    public function errorIfInvalidImageLibraryType()
+    {
+        $generator = new BarcodeGeneratorSVG(2, 'black', 4);
+    }
+
+    /**
+     * @test
      * @group error
      * @expectedException Pinekta\JPCustomerBarcode\Exceptions\InvalidPostCodeException
      */

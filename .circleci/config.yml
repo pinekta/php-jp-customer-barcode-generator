@@ -28,9 +28,17 @@ jobs:
 
       - run: mkdir -p build/logs
       - run: sudo apt-get update -y -qq
+
+      # GD install
       - run: sudo apt-get install -y -qq libfreetype6-dev libpng-dev libjpeg-dev
       - run: sudo docker-php-ext-configure gd --with-freetype-dir=/usr/include/ --with-jpeg-dir=/usr/include/
       - run: sudo docker-php-ext-install gd
+
+      # ImageMagick install
+      - run: sudo apt-get install -y -qq imagemagick
+      - run: yes | sudo pecl install -f imagick
+      - run: sudo docker-php-ext-enable imagick
+
       - run: composer install -n --prefer-dist
 
       - save_cache:
