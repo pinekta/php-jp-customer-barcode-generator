@@ -36,7 +36,7 @@ jobs:
 
       # ImageMagick install
       - run: sudo apt-get install -y -qq imagemagick libmagickwand-dev
-      - run: sudo yes | sudo pecl install -f imagick
+      - run: sudo pecl install -f imagick
       - run: sudo docker-php-ext-enable imagick
 
       - run: composer install -n --prefer-dist
