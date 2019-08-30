@@ -3,7 +3,7 @@
 namespace Pinekta\JPCustomerBarcode;
 
 use Pinekta\JPCustomerBarcode\BarcodeGenerator;
-use Pinekta\JPCustomerBarcode\BarcodeException;
+use Pinekta\JPCustomerBarcode\Exceptions\BarcodeException;
 
 /**
  * A Japan post customer barcode generator for PNG
