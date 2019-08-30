@@ -58,75 +58,7 @@ echo '<img src="data:image/jpg;base64,' . base64_encode($generator->getBarcode('
 
 #### HTML
 
-<div style="font-size:0;position:relative;width:274px;height:12px;">
-<div style="background-color:black;width:2px;height:12px;position:absolute;left:4px;top:0px;">&nbsp;</div>
-<div style="background-color:black;width:2px;height:8px;position:absolute;left:8px;top:4px;">&nbsp;</div>
-<div style="background-color:black;width:2px;height:12px;position:absolute;left:12px;top:0px;">&nbsp;</div>
-<div style="background-color:black;width:2px;height:12px;position:absolute;left:16px;top:0px;">&nbsp;</div>
-<div style="background-color:black;width:2px;height:4px;position:absolute;left:20px;top:4px;">&nbsp;</div>
-<div style="background-color:black;width:2px;height:12px;position:absolute;left:24px;top:0px;">&nbsp;</div>
-<div style="background-color:black;width:2px;height:4px;position:absolute;left:28px;top:4px;">&nbsp;</div>
-<div style="background-color:black;width:2px;height:4px;position:absolute;left:32px;top:4px;">&nbsp;</div>
-<div style="background-color:black;width:2px;height:12px;position:absolute;left:36px;top:0px;">&nbsp;</div>
-<div style="background-color:black;width:2px;height:8px;position:absolute;left:40px;top:0px;">&nbsp;</div>
-<div style="background-color:black;width:2px;height:8px;position:absolute;left:44px;top:4px;">&nbsp;</div>
-<div style="background-color:black;width:2px;height:12px;position:absolute;left:48px;top:0px;">&nbsp;</div>
-<div style="background-color:black;width:2px;height:4px;position:absolute;left:52px;top:4px;">&nbsp;</div>
-<div style="background-color:black;width:2px;height:4px;position:absolute;left:56px;top:4px;">&nbsp;</div>
-<div style="background-color:black;width:2px;height:12px;position:absolute;left:60px;top:0px;">&nbsp;</div>
-<div style="background-color:black;width:2px;height:4px;position:absolute;left:64px;top:4px;">&nbsp;</div>
-<div style="background-color:black;width:2px;height:4px;position:absolute;left:68px;top:4px;">&nbsp;</div>
-<div style="background-color:black;width:2px;height:12px;position:absolute;left:72px;top:0px;">&nbsp;</div>
-<div style="background-color:black;width:2px;height:8px;position:absolute;left:76px;top:0px;">&nbsp;</div>
-<div style="background-color:black;width:2px;height:8px;position:absolute;left:80px;top:4px;">&nbsp;</div>
-<div style="background-color:black;width:2px;height:12px;position:absolute;left:84px;top:0px;">&nbsp;</div>
-<div style="background-color:black;width:2px;height:4px;position:absolute;left:88px;top:4px;">&nbsp;</div>
-<div style="background-color:black;width:2px;height:12px;position:absolute;left:92px;top:0px;">&nbsp;</div>
-<div style="background-color:black;width:2px;height:12px;position:absolute;left:96px;top:0px;">&nbsp;</div>
-<div style="background-color:black;width:2px;height:8px;position:absolute;left:100px;top:4px;">&nbsp;</div>
-<div style="background-color:black;width:2px;height:8px;position:absolute;left:104px;top:0px;">&nbsp;</div>
-<div style="background-color:black;width:2px;height:4px;position:absolute;left:108px;top:4px;">&nbsp;</div>
-<div style="background-color:black;width:2px;height:12px;position:absolute;left:112px;top:0px;">&nbsp;</div>
-<div style="background-color:black;width:2px;height:4px;position:absolute;left:116px;top:4px;">&nbsp;</div>
-<div style="background-color:black;width:2px;height:8px;position:absolute;left:120px;top:4px;">&nbsp;</div>
-<div style="background-color:black;width:2px;height:12px;position:absolute;left:124px;top:0px;">&nbsp;</div>
-<div style="background-color:black;width:2px;height:8px;position:absolute;left:128px;top:0px;">&nbsp;</div>
-<div style="background-color:black;width:2px;height:4px;position:absolute;left:132px;top:4px;">&nbsp;</div>
-<div style="background-color:black;width:2px;height:12px;position:absolute;left:136px;top:0px;">&nbsp;</div>
-<div style="background-color:black;width:2px;height:4px;position:absolute;left:140px;top:4px;">&nbsp;</div>
-<div style="background-color:black;width:2px;height:12px;position:absolute;left:144px;top:0px;">&nbsp;</div>
-<div style="background-color:black;width:2px;height:8px;position:absolute;left:148px;top:0px;">&nbsp;</div>
-<div style="background-color:black;width:2px;height:8px;position:absolute;left:152px;top:4px;">&nbsp;</div>
-<div style="background-color:black;width:2px;height:4px;position:absolute;left:156px;top:4px;">&nbsp;</div>
-<div style="background-color:black;width:2px;height:8px;position:absolute;left:160px;top:4px;">&nbsp;</div>
-<div style="background-color:black;width:2px;height:8px;position:absolute;left:164px;top:0px;">&nbsp;</div>
-<div style="background-color:black;width:2px;height:4px;position:absolute;left:168px;top:4px;">&nbsp;</div>
-<div style="background-color:black;width:2px;height:8px;position:absolute;left:172px;top:4px;">&nbsp;</div>
-<div style="background-color:black;width:2px;height:8px;position:absolute;left:176px;top:0px;">&nbsp;</div>
-<div style="background-color:black;width:2px;height:4px;position:absolute;left:180px;top:4px;">&nbsp;</div>
-<div style="background-color:black;width:2px;height:8px;position:absolute;left:184px;top:4px;">&nbsp;</div>
-<div style="background-color:black;width:2px;height:8px;position:absolute;left:188px;top:0px;">&nbsp;</div>
-<div style="background-color:black;width:2px;height:4px;position:absolute;left:192px;top:4px;">&nbsp;</div>
-<div style="background-color:black;width:2px;height:8px;position:absolute;left:196px;top:4px;">&nbsp;</div>
-<div style="background-color:black;width:2px;height:8px;position:absolute;left:200px;top:0px;">&nbsp;</div>
-<div style="background-color:black;width:2px;height:4px;position:absolute;left:204px;top:4px;">&nbsp;</div>
-<div style="background-color:black;width:2px;height:8px;position:absolute;left:208px;top:4px;">&nbsp;</div>
-<div style="background-color:black;width:2px;height:8px;position:absolute;left:212px;top:0px;">&nbsp;</div>
-<div style="background-color:black;width:2px;height:4px;position:absolute;left:216px;top:4px;">&nbsp;</div>
-<div style="background-color:black;width:2px;height:8px;position:absolute;left:220px;top:4px;">&nbsp;</div>
-<div style="background-color:black;width:2px;height:8px;position:absolute;left:224px;top:0px;">&nbsp;</div>
-<div style="background-color:black;width:2px;height:4px;position:absolute;left:228px;top:4px;">&nbsp;</div>
-<div style="background-color:black;width:2px;height:8px;position:absolute;left:232px;top:4px;">&nbsp;</div>
-<div style="background-color:black;width:2px;height:8px;position:absolute;left:236px;top:0px;">&nbsp;</div>
-<div style="background-color:black;width:2px;height:4px;position:absolute;left:240px;top:4px;">&nbsp;</div>
-<div style="background-color:black;width:2px;height:8px;position:absolute;left:244px;top:4px;">&nbsp;</div>
-<div style="background-color:black;width:2px;height:8px;position:absolute;left:248px;top:0px;">&nbsp;</div>
-<div style="background-color:black;width:2px;height:4px;position:absolute;left:252px;top:4px;">&nbsp;</div>
-<div style="background-color:black;width:2px;height:8px;position:absolute;left:256px;top:0px;">&nbsp;</div>
-<div style="background-color:black;width:2px;height:8px;position:absolute;left:260px;top:4px;">&nbsp;</div>
-<div style="background-color:black;width:2px;height:8px;position:absolute;left:264px;top:4px;">&nbsp;</div>
-<div style="background-color:black;width:2px;height:12px;position:absolute;left:268px;top:0px;">&nbsp;</div>
-</div>
+[HTML](./sample/sample.html)
 
 #### PNG
 
