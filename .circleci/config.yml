@@ -27,6 +27,7 @@ jobs:
           - v1-dependencies-
 
       - run: mkdir -p build/logs
+      - run: sudo docker-php-ext-install gd
       - run: composer install -n --prefer-dist
 
       - save_cache:
