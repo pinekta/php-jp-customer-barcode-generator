@@ -34,7 +34,7 @@ jobs:
             - ./vendor
           key: v1-dependencies-{{ checksum "composer.json" }}
 
-      - run: vendor/bin/phpcs --standard=PSR2 ./src
-      - run: vendor/bin/phpcs --standard=PSR2 ./tests
+      - run: vendor/bin/phpcs --warning-severity=6 --standard=PSR2 ./src
+      - run: vendor/bin/phpcs --warning-severity=6 --standard=PSR2 ./tests
       - run: vendor/bin/phpunit
       - run: php vendor/bin/php-coveralls
