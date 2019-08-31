@@ -11,8 +11,8 @@ badge
 logo image
 -->
 
-「php-jp-customer-barcode-generator」はフレームワークに依存せず簡単に使えるPHPで書かれた日本郵便のカスタマバーコードジェネレーターです。
-SVG、PNG、JPG、HTML形式でカスタマバーコードを生成します。
+「php-jp-customer-barcode-generator」はフレームワークに依存せず簡単に使えるPHPで書かれた日本郵便のカスタマバーコードジェネレーターです。  
+SVG、PNG、JPG、HTML形式でカスタマバーコードを生成します。  
 なお、PHP5.4.0以上じゃないと動作しません。
 
 英語のREADMEは[こちら](./README.md) 
@@ -67,7 +67,8 @@ echo '<img src="data:image/jpg;base64,' . base64_encode($generator->getBarcode('
 
 ## 日本郵便 カスタマバーコード付番事例とのチェック結果
 
-[日本郵便 カスタマバーコード付番事例（検証用）](https://www.post.japanpost.jp/zipcode/zipmanual/p25.html) に記載されている例で出力された結果は以下のHTMLにあります。
+[日本郵便 カスタマバーコード付番事例（検証用）](https://www.post.japanpost.jp/zipcode/zipmanual/p25.html) に記載されている例で出力された結果は以下のHTMLにあります。  
+[チェック結果](./sample/create-barcode-result.html)
 
 <!--
 ## Documentation
@@ -77,7 +78,7 @@ Comming soon...
 
 ## コントリビュート
 
-コントリビュート大歓迎です！
+コントリビュート大歓迎です！  
 [こちらのリンク](./CODE_OF_CONDUCT.md) と [ガイドライン](./CONTRIBUTING.md) を守っていただけると幸甚です。
 
 ## Copyright
@@ -86,5 +87,5 @@ copyright © [@pinekta](https://github.com/pinekta).
 
 ## License
 
-「pinekta/php-jp-customer-barcode-generator」はMITライセンスです。
+「pinekta/php-jp-customer-barcode-generator」はMITライセンスです。  
 詳しくは [LICENSE](./LICENSE) をご参照ください。
