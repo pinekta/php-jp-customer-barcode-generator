@@ -18,6 +18,36 @@ use Pinekta\JPCustomerBarcode\BarcodeGeneratorSVG;
 class JPCustomerBarcodeTest extends TestCase
 {
     /**
+     * Is available GD
+     *
+     * @return bool
+     */
+    private function isAvailableGD()
+    {
+        return (bool)function_exists('imagecreate');
+    }
+
+    /**
+     * Is available ImageMagick
+     *
+     * @return bool
+     */
+    private function isAvailableImageMagick()
+    {
+        return (bool)extension_loaded('imagick');
+    }
+
+    /**
+     * Is available image library
+     *
+     * @return bool
+     */
+    private function isAvailableImageLibrary()
+    {
+        return ($this->isAvailableGD() || $this->isAvailableImageLibrary()) ? true : false;
+    }
+
+    /**
      * @test
      * @group extract
      * @dataProvider isRightConvertCodeCharsProvider
@@ -59,6 +89,12 @@ class JPCustomerBarcodeTest extends TestCase
         $resultHtml = './tests/files/generated/create-barcode-result.html';
 
         foreach ($testClasses as $ext => $testClass) {
+            if ($ext === 'png' || $ext === 'jpg') {
+                if (!$this->isAvailableImageLibrary()) {
+                    continue;
+                }
+            }
+
             $class = new \ReflectionClass($testClass);
             $method = $class->getMethod('createBarcode');
             $method->setAccessible(true);
@@ -106,6 +142,10 @@ class JPCustomerBarcodeTest extends TestCase
      */
     public function pngBarcodeGeneratorCanGenerate()
     {
+        if (!$this->isAvailableImageLibrary()) {
+            $this->markTestSkipped('Please install GD or ImageMagick.');
+        }
+
         $generator = new BarcodeGeneratorPNG();
         $generated = $generator->getBarcode('104-0045', '東京都中央区築地2-3-4');
         file_put_contents('./tests/files/generated/test.png', $generated);
@@ -119,6 +159,10 @@ class JPCustomerBarcodeTest extends TestCase
      */
     public function jpgBarcodeGeneratorCanGenerate()
     {
+        if (!$this->isAvailableImageLibrary()) {
+            $this->markTestSkipped('Please install GD or ImageMagick.');
+        }
+
         $generator = new BarcodeGeneratorJPG();
         $generated = $generator->getBarcode('104-0045', '東京都中央区築地2-3-4');
         file_put_contents('./tests/files/generated/test.jpg', $generated);
@@ -133,6 +177,10 @@ class JPCustomerBarcodeTest extends TestCase
      */
     public function pngGdBarcodeGeneratorCanGenerate()
     {
+        if (!$this->isAvailableGD()) {
+            $this->markTestSkipped('Please install GD.');
+        }
+
         $generator = new BarcodeGeneratorPNG(2, 'black', BarcodeGeneratorPNG::IMAGE_LIBRARY_TYPES_GD);
         $generated = $generator->getBarcode('104-0045', '東京都中央区築地2-3-4');
         $this->assertNotNull($generated);
@@ -145,6 +193,10 @@ class JPCustomerBarcodeTest extends TestCase
      */
     public function pngImagemagickBarcodeGeneratorCanGenerate()
     {
+        if (!$this->isAvailableImageMagick()) {
+            $this->markTestSkipped('Please install ImageMagick.');
+        }
+
         $generator = new BarcodeGeneratorPNG(2, 'black', BarcodeGeneratorPNG::IMAGE_LIBRARY_TYPES_IMAGEMAGICK);
         $generated = $generator->getBarcode('104-0045', '東京都中央区築地2-3-4');
         $this->assertNotNull($generated);
@@ -157,6 +209,10 @@ class JPCustomerBarcodeTest extends TestCase
      */
     public function jpgGdBarcodeGeneratorCanGenerate()
     {
+        if (!$this->isAvailableGD()) {
+            $this->markTestSkipped('Please install GD.');
+        }
+
         $generator = new BarcodeGeneratorJPG(2, 'black', BarcodeGeneratorJPG::IMAGE_LIBRARY_TYPES_GD);
         $generated = $generator->getBarcode('104-0045', '東京都中央区築地2-3-4');
         $this->assertNotNull($generated);
@@ -169,6 +225,10 @@ class JPCustomerBarcodeTest extends TestCase
      */
     public function jpgImagemagickBarcodeGeneratorCanGenerate()
     {
+        if (!$this->isAvailableImageMagick()) {
+            $this->markTestSkipped('Please install ImageMagick.');
+        }
+
         $generator = new BarcodeGeneratorJPG(2, 'black', BarcodeGeneratorJPG::IMAGE_LIBRARY_TYPES_IMAGEMAGICK);
         $generated = $generator->getBarcode('104-0045', '東京都中央区築地2-3-4');
         $this->assertNotNull($generated);
