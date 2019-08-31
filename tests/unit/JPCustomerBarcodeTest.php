@@ -236,6 +236,41 @@ class JPCustomerBarcodeTest extends TestCase
 
     /**
      * @test
+     * @group imagelibrary
+     */
+    public function testResolveImageLibrary()
+    {
+        if (!$this->isAvailableImageLibrary()) {
+            $this->markTestSkipped('Please install GD or ImageMagick.');
+        }
+
+        $class = new \ReflectionClass(BarcodeGeneratorPNG::class);
+        $methodResolveImageLibrary = $class->getMethod('resolveImageLibrary');
+        $methodResolveImageLibrary->setAccessible(true);
+
+        $actual = $methodResolveImageLibrary->invokeArgs(new BarcodeGeneratorPNG(), ['gd']);
+        $this->assertEquals(BarcodeGeneratorSVG::IMAGE_LIBRARY_TYPES_GD, $actual);
+        $actual = $methodResolveImageLibrary->invokeArgs(new BarcodeGeneratorPNG(), ['imagemagick']);
+        $this->assertEquals(BarcodeGeneratorSVG::IMAGE_LIBRARY_TYPES_IMAGEMAGICK, $actual);
+    }
+
+    /**
+     * @test
+     * @group error
+     * @group imagelibrary
+     * @expectedException Pinekta\JPCustomerBarcode\Exceptions\BarcodeException
+     */
+    public function testResolveImageLibraryIfInvalidValue()
+    {
+        $class = new \ReflectionClass(BarcodeGeneratorPNG::class);
+        $methodResolveImageLibrary = $class->getMethod('resolveImageLibrary');
+        $methodResolveImageLibrary->setAccessible(true);
+
+        $actual = $methodResolveImageLibrary->invokeArgs(new BarcodeGeneratorPNG(), ['error']);
+    }
+
+    /**
+     * @test
      * @group error
      * @expectedException \InvalidArgumentException
      */

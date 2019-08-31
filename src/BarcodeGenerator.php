@@ -2,6 +2,7 @@
 
 namespace Pinekta\JPCustomerBarcode;
 
+use Pinekta\JPCustomerBarcode\Exceptions\BarcodeException;
 use Pinekta\JPCustomerBarcode\Exceptions\InvalidPostCodeException;
 use Pinekta\JPCustomerBarcode\Exceptions\InvalidAddressException;
 
@@ -472,18 +473,21 @@ abstract class BarcodeGenerator
     /**
      * resolve image library if image output
      *
+     * @param string $testCase
      * @return int
      * @throws BarcodeException
      */
-    protected function resolveImageLibrary()
+    protected function resolveImageLibrary($testCase = null)
     {
         if ($this->imageLibraryType != null) {
             return $this->imageLibraryType;
         }
 
-        if (function_exists('imagecreate')) {
+        if ($testCase === 'gd' ||
+            (function_exists('imagecreate') && $testCase === null)) {
             return self::IMAGE_LIBRARY_TYPES_GD;
-        } elseif (extension_loaded('imagick')) {
+        } elseif ($testCase === 'imagemagick' ||
+            (extension_loaded('imagick') && $testCase === null)) {
             return self::IMAGE_LIBRARY_TYPES_IMAGEMAGICK;
         } else {
             throw new BarcodeException('Neither gd-lib or imagick are installed!');
